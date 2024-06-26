@@ -1,0 +1,19 @@
+module MathUnit (
+    input [511:0] A1,
+    input [511:0] A2,
+    input [1:0] operation, // 00: No-op, 10: Add, 11: Multiply
+    output reg [511:0] low_result,
+    output reg [511:0] high_result
+);
+    always @(*) begin
+        case (operation)
+            2'b10: {high_result, low_result} = A1 + A2;
+            2'b11: {high_result, low_result} = A1 * A2;
+            default: begin
+                low_result = 0;
+                high_result = 0;
+            end
+        endcase
+    end
+endmodule
+

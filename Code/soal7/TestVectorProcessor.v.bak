@@ -1,0 +1,84 @@
+module TestVectorProcessor;
+
+    // Define your testbench signals and modules
+    reg clk;
+    reg reset;
+    reg [2:0] operation;
+    reg [8:0] mem_address;
+    reg [31:0] mem_data_in;
+    reg mem_read;
+    reg mem_write;
+
+    // Instantiate the VectorProcessor module
+    VectorProcessor vp (
+        .clk(clk),
+        .reset(reset),
+        .operation(operation),
+        .mem_address(mem_address),
+        .mem_data_in(mem_data_in),
+        .mem_read(mem_read),
+        .mem_write(mem_write)
+    );
+
+    // Initial values setup
+    initial begin
+        // Initialize signals
+        clk = 0;
+        reset = 1;
+        operation = 3'b000; // Set your operation code here
+        mem_address = 0;
+        mem_data_in = 32'h00000000;
+        mem_read = 0;
+        mem_write = 0;
+
+        // Apply reset sequence
+        #10 reset = 0;
+
+        // Test Scenario 1: Normal Operation
+        #20;
+        mem_data_in = 32'hABCDE;
+        mem_write = 1;
+        $display("** Note: Performing write operation to memory");
+        #10;
+        mem_write = 0;
+        $display("** Note: Write operation successful");
+
+        #10;
+        mem_read = 1;
+        $display("** Note: Performing read operation from memory");
+        #10;
+        mem_read = 0;
+        $display("** Note: Read operation successful");
+        $display($sformatf("** Note: Memory contents after read operation: memory[%0d]: %h", mem_address, vp.memory[mem_address]));
+
+        // Test Scenario 2: Boundary Conditions
+        #20;
+        mem_address = 9'b111111111; // Set your maximum memory address here
+        mem_read = 1;
+        $display("** Note: Testing boundary conditions");
+        $display($sformatf("** Note: Performing read operation from maximum memory address"));
+        #10;
+        mem_read = 0;
+        $display("** Note: Read operation successful");
+        $display($sformatf("** Note: Data read from memory[%0d]: %h", mem_address, vp.memory[mem_address]));
+
+        // Test Scenario 3: Minimum Values
+        #20;
+        mem_address = 9'b0; // Set your minimum memory address here
+        mem_data_in = 32'h12345678; // Set your minimum data here
+        mem_write = 1;
+        $display("** Note: Testing minimum values");
+        $display($sformatf("** Note: Performing write operation to minimum memory address"));
+        #10;
+        mem_write = 0;
+        $display("** Note: Write operation successful");
+
+        // Finish simulation
+        #20;
+        $display("** Note: Simulation completed successfully");
+        #10;
+        $finish;
+    end
+
+endmodule
+

@@ -1,0 +1,164 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/University/DSD/Practices/Practice4
+vMathUnit
+Z0 !s110 1719400869
+!i10b 1
+!s100 =`i_]UihJzTCLAY>?FjH`3
+IJk];zJY0HJTZ<9_9cTEJQ3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dD:/University/DSD/midterm/soal7
+w1719309543
+8D:/University/DSD/midterm/soal7/MathUnit.v
+FD:/University/DSD/midterm/soal7/MathUnit.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1719400869.000000
+!s107 D:/University/DSD/midterm/soal7/MathUnit.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/University/DSD/midterm/soal7/MathUnit.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@math@unit
+vMemory
+Z7 !s110 1719403520
+!i10b 1
+!s100 I;0aS>]j?71f]?kN4gB2A0
+In`R:<@5V1<4z@zVK2a[A81
+R1
+R2
+w1719403433
+8D:/University/DSD/midterm/soal7/Memory.v
+FD:/University/DSD/midterm/soal7/Memory.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z8 !s108 1719403520.000000
+!s107 D:/University/DSD/midterm/soal7/Memory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/University/DSD/midterm/soal7/Memory.v|
+!i113 1
+R5
+R6
+n@memory
+vProcessor
+R7
+!i10b 1
+!s100 I1QoWSLR@3j[l>0:JL_gZ3
+I^4All0i7CO2E4n@8_JI[b2
+R1
+R2
+w1719403449
+Z9 8D:/University/DSD/midterm/soal7/VectorProcessor.v
+Z10 FD:/University/DSD/midterm/soal7/VectorProcessor.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+Z11 !s107 D:/University/DSD/midterm/soal7/VectorProcessor.v|
+Z12 !s90 -reportprogress|300|-work|work|-stats=none|D:/University/DSD/midterm/soal7/VectorProcessor.v|
+!i113 1
+R5
+R6
+n@processor
+vRegisterFile
+!s110 1719400868
+!i10b 1
+!s100 foP:;[TQaQf@YBYgG`f_S2
+I;=h<;A3?k8=ik_A08A94I0
+R1
+R2
+w1719309424
+8D:/University/DSD/midterm/soal7/RegisterFile.v
+FD:/University/DSD/midterm/soal7/RegisterFile.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1719400868.000000
+!s107 D:/University/DSD/midterm/soal7/RegisterFile.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/University/DSD/midterm/soal7/RegisterFile.v|
+!i113 1
+R5
+R6
+n@register@file
+vtb_VectorProcessor
+!s110 1719399945
+!i10b 1
+!s100 nX51QOiRW:QNnECn<jb[Z3
+I870P_YBXP[gW7_WK7m1W@0
+R1
+R2
+w1719399939
+Z13 8D:/University/DSD/midterm/soal7/TestVectorProcessor.v
+Z14 FD:/University/DSD/midterm/soal7/TestVectorProcessor.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1719399945.000000
+!s107 D:/University/DSD/midterm/soal7/TestVectorProcessor.v|
+Z15 !s90 -reportprogress|300|-work|work|-stats=none|D:/University/DSD/midterm/soal7/TestVectorProcessor.v|
+!i113 1
+R5
+R6
+ntb_@vector@processor
+vTestVectorProcessor
+R7
+!i10b 1
+!s100 YXY5HSaB6eU?WUJIc0kC33
+IR7om66XF^5XMP22E;Jg2R0
+R1
+R2
+w1719403514
+R13
+R14
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 D:/University/DSD/midterm/soal7/TestVectorProcessor.v|
+R15
+!i113 1
+R5
+R6
+n@test@vector@processor
+vVectorProcessor
+R0
+!i10b 1
+!s100 :]?FG4?[A0JDMh8L8J34S2
+I;^0;:5eV8YXQJT4e<jcj?0
+R1
+R2
+w1719399754
+R9
+R10
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R11
+R12
+!i113 1
+R5
+R6
+n@vector@processor

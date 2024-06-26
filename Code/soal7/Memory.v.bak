@@ -1,0 +1,22 @@
+module Memory(
+    input clk,
+    input [8:0] address, // 9-bit address for 512-depth memory
+    input [31:0] write_data,
+    input mem_write,
+    input mem_read,
+    output reg [31:0] read_data
+);
+    // Memory array
+    reg [31:0] mem [0:511];
+    
+    // Read and write operations
+    always @(posedge clk) begin
+        if (mem_write) begin
+            mem[address] <= write_data;
+        end
+        if (mem_read) begin
+            read_data <= mem[address];
+        end
+    end
+endmodule
+

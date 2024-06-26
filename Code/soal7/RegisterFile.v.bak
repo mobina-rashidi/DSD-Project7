@@ -1,0 +1,28 @@
+module RegisterFile (
+    input clk,
+    input reset,
+    input [511:0] in1,
+    input [511:0] in2,
+    input [1:0] write_select, // Selects which register to write to: 00: A1, 01: A2, 10: A3, 11: A4
+    output reg [511:0] A1,
+    output reg [511:0] A2,
+    output reg [511:0] A3,
+    output reg [511:0] A4
+);
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            A1 <= 0;
+            A2 <= 0;
+            A3 <= 0;
+            A4 <= 0;
+        end else begin
+            case (write_select)
+                2'b00: A1 <= in1;
+                2'b01: A2 <= in2;
+                2'b10: A3 <= in1;
+                2'b11: A4 <= in2;
+            endcase
+        end
+    end
+endmodule
+

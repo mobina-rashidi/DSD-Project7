@@ -1,22 +1,30 @@
-D:/University/DSD/midterm/soal7/MathUnit.v {0 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/MathUnit.v
+D:/University/DSD/midterm/soal7/MathUnit.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/MathUnit.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module MathUnit
-** Error: D:/University/DSD/midterm/soal7/MathUnit.v(18): Register is illegal in left-hand side of continuous assignment
-** Error: D:/University/DSD/midterm/soal7/MathUnit.v(19): Register is illegal in left-hand side of continuous assignment
 
-} {4.0 6.0} {}} D:/University/DSD/midterm/soal7/TestVectorProcessor.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/TestVectorProcessor.v
+Top level modules:
+	MathUnit
+
+} {} {}} D:/University/DSD/midterm/soal7/VectorProcessor.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/VectorProcessor.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module VectorProcessor
+
+Top level modules:
+	VectorProcessor
+
+} {} {}} D:/University/DSD/midterm/soal7/TestVectorProcessor.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/TestVectorProcessor.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module TestVectorProcessor
 
 Top level modules:
 	TestVectorProcessor
 
-} {} {}} D:/University/DSD/midterm/soal7/VectorProcessor.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/VectorProcessor.v
+} {} {}} D:/University/DSD/midterm/soal7/RegisterFile.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/RegisterFile.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module Processor
+-- Compiling module RegisterFile
 
 Top level modules:
-	Processor
+	RegisterFile
 
 } {} {}} D:/University/DSD/midterm/soal7/Memory.v {1 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/Memory.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -25,12 +33,4 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	Memory
 
-} {} {}} D:/University/DSD/midterm/soal7/RegisterFile.v {0 {vlog -work work -stats=none D:/University/DSD/midterm/soal7/RegisterFile.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module RegisterFile
-** Error: D:/University/DSD/midterm/soal7/RegisterFile.v(18): Register is illegal in left-hand side of continuous assignment
-** Error: D:/University/DSD/midterm/soal7/RegisterFile.v(19): Register is illegal in left-hand side of continuous assignment
-** Error: D:/University/DSD/midterm/soal7/RegisterFile.v(20): Register is illegal in left-hand side of continuous assignment
-** Error: D:/University/DSD/midterm/soal7/RegisterFile.v(21): Register is illegal in left-hand side of continuous assignment
-
-} {4.0 8.0} {}}
+} {} {}}

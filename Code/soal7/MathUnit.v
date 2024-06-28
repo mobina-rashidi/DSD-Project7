@@ -2,21 +2,26 @@ module MathUnit (
     input clk,
     input [511:0] A1,
     input [511:0] A2,
+    input [1:0] operation,    // 00: Addition, 01: Multiplication
     output reg [511:0] A3,
     output reg [511:0] A4
 );
 
-// Internal signals
-reg [1023:0] result;
-
-// Arithmetic operations
 always @(posedge clk) begin
-    result <= A1 * A2;  // Multiply A1 and A2
+    case (operation)
+        2'b00: begin // Addition
+            A3 <= A1 + A2;
+            A4 <= 512'b0;
+        end
+        2'b01: begin // Multiplication
+            {A4, A3} <= A1 * A2;
+        end
+        default: begin
+            A3 <= 512'b0;
+            A4 <= 512'b0;
+        end
+    endcase
 end
-
-// Output assignment
-assign A3 = result[511:0];  // Low part of the result
-assign A4 = result[1023:512];  // High part of the result
 
 endmodule
 

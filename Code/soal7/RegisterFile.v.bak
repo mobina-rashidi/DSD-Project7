@@ -1,28 +1,58 @@
 module RegisterFile (
     input clk,
-    input reset,
-    input [511:0] in1,
-    input [511:0] in2,
-    input [1:0] write_select, // Selects which register to write to: 00: A1, 01: A2, 10: A3, 11: A4
-    output reg [511:0] A1,
-    output reg [511:0] A2,
-    output reg [511:0] A3,
-    output reg [511:0] A4
+    input [1:0] sel_reg_write,  // Select which register to write to
+    input [1:0] sel_reg_read1,  // Select first register for read
+    input [1:0] sel_reg_read2,  // Select second register for read
+    input [511:0] data_in,      // Data to be written into selected register
+    input reg_write_enable,     // Enable signal for write operation
+    output reg [511:0] A1,      // Register A1
+    output reg [511:0] A2,      // Register A2
+    output reg [511:0] A3,      // Register A3
+    output reg [511:0] A4       // Register A4
 );
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
-            A1 <= 0;
-            A2 <= 0;
-            A3 <= 0;
-            A4 <= 0;
-        end else begin
-            case (write_select)
-                2'b00: A1 <= in1;
-                2'b01: A2 <= in2;
-                2'b10: A3 <= in1;
-                2'b11: A4 <= in2;
-            endcase
-        end
+
+// Register declaration
+reg [511:0] registers [0:3];
+
+// Output assignment
+always @(posedge clk) begin
+    A1 <= registers[0];
+    A2 <= registers[1];
+    A3 <= registers[2];
+    A4 <= registers[3];
+end
+
+// Read operation
+always @(*) begin
+    case(sel_reg_read1)
+        2'b00: A1 = registers[0];
+        2'b01: A1 = registers[1];
+        2'b10: A1 = registers[2];
+        2'b11: A1 = registers[3];
+        default: A1 = 512'b0;
+    endcase
+
+    case(sel_reg_read2)
+        2'b00: A2 = registers[0];
+        2'b01: A2 = registers[1];
+        2'b10: A2 = registers[2];
+        2'b11: A2 = registers[3];
+        default: A2 = 512'b0;
+    endcase
+end
+
+// Write operation
+always @(posedge clk) begin
+    if (reg_write_enable) begin
+        case(sel_reg_write)
+            2'b00: registers[0] <= data_in;
+            2'b01: registers[1] <= data_in;
+            2'b10: registers[2] <= data_in;
+            2'b11: registers[3] <= data_in;
+            default: ;
+        endcase
     end
+end
+
 endmodule
 

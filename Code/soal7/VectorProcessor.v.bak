@@ -1,78 +1,56 @@
 module VectorProcessor (
-    // Inputs
     input clk,
-    input reset,
-    input [1:0] operation,
-    input [8:0] mem_address,
-    input [31:0] mem_data_in,
-    input mem_read,
-    input mem_write,
-    // Outputs
-    output reg [31:0] mem_data_out
+    input [8:0] addr,
+    input [31:0] data_in,
+    input write_enable,
+    input burst_enable,       // New input for burst operations
+    input [3:0] burst_length, // New input for burst length
+    input reg_write_enable,
+    input [1:0] sel_reg_write,
+    input [1:0] sel_reg_read1,
+    input [1:0] sel_reg_read2,
+    input [1:0] operation,  // Control signal for selecting add or multiply
+    output [511:0] A1,
+    output [511:0] A2,
+    output [511:0] A3,
+    output [511:0] A4,
+    output [31:0] data_out
 );
 
-// Internal signals/registers
-reg [511:0] A1, A2, A3, A4;
-
-// Instantiate RegisterFile module
-RegisterFile rf (
+// Instantiate RegisterFile
+RegisterFile regfile (
     .clk(clk),
-    .reset(reset),
-    .read_address1(mem_address),
-    .read_address2(mem_address + 1),
-    .write_address(mem_address + 2),
-    .write_data(mem_data_in),
-    .read_data1(A1),
-    .read_data2(A2)
+    .sel_reg_write(sel_reg_write),
+    .sel_reg_read1(sel_reg_read1),
+    .sel_reg_read2(sel_reg_read2),
+    .data_in(data_in),
+    .reg_write_enable(reg_write_enable),
+    .A1(A1),
+    .A2(A2),
+    .A3(A3),
+    .A4(A4)
 );
 
-// Instantiate MathUnit module
-MathUnit mu (
+// Instantiate MathUnit
+MathUnit mathunit (
     .clk(clk),
-    .reset(reset),
-    .operand1(A1),
-    .operand2(A2),
-    .low_result(A3),
-    .high_result(A4),
-    .operation(operation)
+    .A1(A1),
+    .A2(A2),
+    .operation(operation),
+    .A3(A3),
+    .A4(A4)
 );
 
-// Instantiate Memory module
-Memory mem (
+// Instantiate Memory
+Memory memory (
     .clk(clk),
-    .reset(reset),
-    .address(mem_address),
-    .data_in(mem_data_in),
-    .read(mem_read),
-    .write(mem_write),
-    .data_out(mem_data_out)
+    .addr(addr),
+    .data_in(data_in),
+    .write_enable(write_enable),
+    .burst_enable(burst_enable),
+    .burst_length(burst_length),
+    .data_out(data_out)
 );
-
-// Example: Additional logic to handle operations and status flags
-always @(posedge clk) begin
-    if (reset) begin
-        // Reset operations
-        A1 <= 512'h0;
-        A2 <= 512'h0;
-        A3 <= 512'h0;
-        A4 <= 512'h0;
-        mem_data_out <= 32'h0;
-    end else begin
-        // Perform operations based on 'operation' input
-        // Example: handle different operations here
-        case (operation)
-            2'b00: begin
-                // Code for operation 00
-            end
-            2'b01: begin
-                // Code for operation 01
-            end
-            default: begin
-                // Default case
-            end
-        endcase
-    end
-end
 
 endmodule
 

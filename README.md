@@ -6,7 +6,7 @@
 ## ابزار های استفاده شده در پروژه
 <table style="width:100%">
   <tr>
-    <td align="right">ModelSim</td>
+    <td align="right">Include instructions for how users can contribute to your project. For example:</td>
   </tr>
 </table>
 
